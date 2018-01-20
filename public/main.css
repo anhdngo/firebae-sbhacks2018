@@ -4,8 +4,8 @@ body{
     text-align: center;
     margin-left: 20%;
     margin-right: 20%;
-    font-size: 20px;
-    padding-top: 70px;
+    font-size: 25px;
+    padding-top: 200px;
 
     background-image: url("bg.png");
     background-repeat: no-repeat;
@@ -40,6 +40,15 @@ h2{
     color: white;
 }
 
+.navbar-nav li a {
+ line-height: 60px;
+}
+
+.logo {
+  display: inline-block;
+  align: left;
+}
+
 nav {
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 }
@@ -51,14 +60,12 @@ nav {
     text-decoration: none;
     font-size: 1.2em;
 }
-#brand:hover {
-    color: white;
-}
+
 li {
     background: white;
 }
 .card {
-    border-radius: 10px;
+  border-radius: 10px;
   border-width: 1px;
   border-style: solid;
   border-color: #ececec;
