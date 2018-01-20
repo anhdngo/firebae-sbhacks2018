@@ -55,10 +55,11 @@ li {
 .card {
   border-width: 1px;
   border-style: solid;
-  border-color: #b2b2b2;
+  border-color: #ececec;
 
   background-color: #f4f4f4;
   padding: 50px;
+    opacity: 0.9;
 
   box-shadow: 0 2px 5px rgba(0,0,0,.26)
 }
@@ -97,7 +98,7 @@ li {
     }
     100% {
         right: 0;
-        opacity: 1;
+        opacity: 0.9;
     }
 
 }
