@@ -5,6 +5,8 @@ body{
     margin-right: 20%;
     font-size: 20px;
     padding-top: 70px;
+
+
 }
 
 h1{
@@ -33,4 +35,15 @@ nav {
 }
 nav a {
     color: #5d5d5d;
+}
+
+.card {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #b2b2b2;
+
+  background-color: #f4f4f4;
+  padding: 50px;
+
+  box-shadow: 0 2px 5px rgba(0,0,0,.26)
 }
