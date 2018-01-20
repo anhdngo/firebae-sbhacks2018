@@ -62,6 +62,11 @@ li {
 
   box-shadow: 0 2px 5px rgba(0,0,0,.26)
 }
+.firebaseui-card-content {
+    padding-left: 70px;
+    padding-right: 70px;
+    margin: 0;
+}
 
 
 /* animation */
@@ -87,11 +92,11 @@ li {
 }
 @keyframes left-in {
     0% {
-        left: 20px;
+        right: 20px;
         opacity: 0;
     }
     100% {
-        left: 0;
+        right: 0;
         opacity: 1;
     }
 
