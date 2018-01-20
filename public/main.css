@@ -1,6 +1,17 @@
 body{
     font-family: 'Open Sans', sans-serif;
     text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: 20px;
+}
+
+h1{
+  font-size: 60px;
+}
+
+h2{
+  font-size: 30px;
 }
 .login {
     position: relative;
@@ -13,6 +24,7 @@ body{
 .navbar-inverse .navbar-nav>.active>a {
     background-color: #c79a00;
 }
+<<<<<<< HEAD
 nav {
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
 }
@@ -22,3 +34,5 @@ nav {
 nav a {
     color: #5d5d5d;
 }
+=======
+>>>>>>> de23f2838adbd02a1a1ce9c10b47392be409f3e8
