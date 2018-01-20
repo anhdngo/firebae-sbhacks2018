@@ -18,7 +18,7 @@ h2{
 }
 .main-content {
     position: relative;
-    top: 200px;
+    /*top: 200px;*/
 }
 .navbar {
     background: #ffca27;
