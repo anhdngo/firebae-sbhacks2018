@@ -1,22 +1,27 @@
 body{
     font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     text-align: center;
     margin-left: 20%;
     margin-right: 20%;
     font-size: 20px;
     padding-top: 70px;
 
-
+    background-image: url("bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 nav a {
     background: #ffca27;
 }
 h1{
   font-size: 2em;
+  font-weight: 300;
 }
 
 h2{
   font-size: 1.2em;
+  font-weight: 300;
 }
 .main-content {
     position: relative;
@@ -41,19 +46,65 @@ nav {
 .navbar-brand {
     color: #5d5d5d;
 }
-nav a {
+#brand {
     color: #5d5d5d;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+#brand:hover {
+    color: white;
 }
 li {
     background: white;
 }
 .card {
+    border-radius: 10px;
   border-width: 1px;
   border-style: solid;
-  border-color: #b2b2b2;
+  border-color: #ececec;
 
   background-color: #f4f4f4;
   padding: 50px;
+    opacity: 0.9;
 
   box-shadow: 0 2px 5px rgba(0,0,0,.26)
+}
+.firebaseui-card-content {
+    padding-left: 70px;
+    padding-right: 70px;
+    margin: 0;
+}
+
+
+/* animation */
+.fade-in {
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+.left-in {
+    position: relative;
+    animation-name: left-in;
+    animation-duration: 1s;
+
+}
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes left-in {
+    0% {
+        right: 20px;
+        opacity: 0;
+    }
+    100% {
+        right: 0;
+        opacity: 0.9;
+    }
+
 }
