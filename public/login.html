@@ -49,6 +49,12 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
      <link rel="stylesheet" href="main.css">
+    <style>
+      .login {
+        position: relative;
+        top: 200px;
+      }
+    </style>
   </head>
   <body>
     <!-- The surrounding HTML is left untouched by FirebaseUI.
@@ -62,9 +68,13 @@
          <ul class="nav navbar-nav">
            <li class="active"><a href="#">Home</a></li>
            <li><a href="#">About</a></li>
-           <li><a href="#"></a><div id="firebaseui-auth-container"></div></li>
+           <li><a href="#"></a></li>
          </ul>
        </div>
      </nav>
+    <div class="login">
+      <h1>Sign In</h1>
+      <div id="firebaseui-auth-container"></div>
+    </div>
   </body>
 </html>
