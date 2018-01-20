@@ -6,7 +6,7 @@ body{
     font-size: 20px;
     padding-top: 70px;
 
-
+    background-image: url("bg.png");
 }
 
 h1{
