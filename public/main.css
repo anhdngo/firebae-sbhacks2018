@@ -41,8 +41,12 @@ nav {
 .navbar-brand {
     color: #5d5d5d;
 }
-nav a {
+#brand {
     color: #5d5d5d;
+    text-decoration: none;
+}
+#brand:hover {
+    color: white;
 }
 li {
     background: white;
