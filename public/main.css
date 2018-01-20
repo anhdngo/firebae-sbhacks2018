@@ -7,13 +7,13 @@ body{
 }
 
 h1{
-  font-size: 60px;
+  font-size: 2em;
 }
 
 h2{
-  font-size: 30px;
+  font-size: 1.2em;
 }
-.login {
+.main-content {
     position: relative;
     top: 200px;
 }
@@ -23,4 +23,13 @@ h2{
 }
 .navbar-inverse .navbar-nav>.active>a {
     background-color: #c79a00;
+}
+nav {
+    box-shadow: 0 2px 5px rgba(0,0,0,.26);
+}
+.navbar-brand {
+    color: #5d5d5d;
+}
+nav a {
+    color: #5d5d5d;
 }
