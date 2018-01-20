@@ -5,7 +5,6 @@ body{
     margin-left: 20%;
     margin-right: 20%;
     font-size: 25px;
-    padding-top: 200px;
 
     background-image: url("bg.png");
     background-repeat: no-repeat;
@@ -25,7 +24,7 @@ h2{
 }
 .main-content {
     position: relative;
-    /*top: 200px;*/
+    margin-top: 100px;
 }
 .navbar {
     background: #ffca27;
