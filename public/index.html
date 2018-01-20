@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Sample FirebaseUI App</title>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
     <script>
       // Initialize Firebase
       var config = {
@@ -55,8 +56,40 @@
         });
       };
 
+
+      initDB = function(){
+        var db = firebase.firestore();
+
+        db.collection("Items").get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            $( ".Shop" ).append( "\
+            <div class=\"col-sm-6 col-md-4\">\
+              <div class=\"thumbnail\">\
+                <div class=\"caption\">\
+                  <h3 name=\"name\">"+ doc.data().Name +"</h3>\
+                  <p name=\"description\">" + doc.data().Description + "</p>\
+                  <p name=\"price\"> $" + doc.data().Price + "</p>\
+                  <p>\
+                    <form action=\"/buy\" method=\"POST\">\
+                      <input type=\"hidden\" value=\""+ doc.data().Owner +"\">\
+                      </input>\
+                      <input type=\"submit\" class=\"btn btn-primary btn-lg\" value=\"Buy Now\">\
+                    </form>\
+                  </p>\
+                </div>\
+              </div>\
+            </div>\
+            " );
+
+            console.log(`${doc.id} => ${doc.data()}`);
+          });
+        });
+      }
+
+
       window.addEventListener('load', function() {
         initApp()
+        initDB()
       });
     </script>
 
@@ -89,6 +122,29 @@
       </div>
     </div>
   </nav>
+
+  <div class="row">
+    <div class="Shop"></div>
+  </div>
+
+  <!-- Modal 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
 
   </body>
 </html>
