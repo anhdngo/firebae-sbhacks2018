@@ -131,7 +131,19 @@
         initDB()
       });
     </script>
+    <script>
+      const messaging = firebase.messaging();
 
+      messaging.requestPermission().then(function() {
+          console.log("notification permission granted");
+          return messaging.getToken();
+      }).then(function(token) {
+          alert(token);
+      })
+          .catch(function(err) {
+              alert("notification permission denied!");
+          })
+    </script>
     <!-- Add Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -148,22 +160,26 @@
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
+      <ul class ="nav navbar-nav navbar-left">
         <div class="navbar-header">
-          <a class="navbar-brand" id="brand"  href="./index.html">FireBasE-Commerce</a>
+          <a class="navbar-brand" id="brand"  href="./index.html"><img src="logo.png" class="logo" />FireBae</a>
         </div>
+
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="./login.html"><div id="sign-in-status"></div></a></li>
           <li class="active"><a onclick="firebase.auth().signOut()"><div id="sign-in"></div></a></li>
           <li class="active"><a href="./login.html"><div id="account-details"></div></a></li>
 
-
         </ul>
+      </div>
       </div>
     </div>
   </nav>
 
+  <div class="main-content container-fluid">
   <div class="row">
     <div class="Shop"></div>
+  </div>
   </div>
 
   <button type="button" class="btn btn-primary btn-lg" id="myBtn">Sell Item</button>
