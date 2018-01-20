@@ -13,3 +13,14 @@ h1{
 h2{
   font-size: 30px;
 }
+.login {
+    position: relative;
+    top: 200px;
+}
+.navbar {
+    background: #ffca27;
+    border: 0;
+}
+.navbar-inverse .navbar-nav>.active>a {
+    background-color: #c79a00;
+}
