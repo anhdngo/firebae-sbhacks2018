@@ -92,7 +92,19 @@
         initDB()
       });
     </script>
+    <script>
+      const messaging = firebase.messaging();
 
+      messaging.requestPermission().then(function() {
+          console.log("notification permission granted");
+          return messaging.getToken();
+      }).then(function(token) {
+          alert(token);
+      })
+          .catch(function(err) {
+              alert("notification permission denied!");
+          })
+    </script>
     <!-- Add Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -114,7 +126,7 @@
           <a class="navbar-brand" id="brand"  href="./index.html"><img src="logo.png" class="logo" />FireBae</a>
         </div>
       </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right navbar-collapse collapse">
           <li class="active user-options"><a href="./login.html"><div id="sign-in-status"></div></a></li>
           <li class="active user-options"><a href="./login.html"><div id="sign-in"></div></a></li>
           <li class="active user-options"><a href="./login.html"><div id="account-details"></div></a></li>
