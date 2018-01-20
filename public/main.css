@@ -62,3 +62,37 @@ li {
 
   box-shadow: 0 2px 5px rgba(0,0,0,.26)
 }
+
+
+/* animation */
+.fade-in {
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+.left-in {
+    position: relative;
+    animation-name: left-in;
+    animation-duration: 1s;
+
+}
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes left-in {
+    0% {
+        left: 20px;
+        opacity: 0;
+    }
+    100% {
+        left: 0;
+        opacity: 1;
+    }
+
+}
