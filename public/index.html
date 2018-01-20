@@ -36,7 +36,7 @@
           alert("You must be signed in to sell.")
         }
       };
-      
+
       pushBuy = function(prod) {
         var db = firebase.firestore();
         var user = firebase.auth().currentUser;
@@ -132,17 +132,20 @@
       });
     </script>
     <script>
-      const messaging = firebase.messaging();
 
+      <!--  NOTIFICATIONS -->
+      const messaging = firebase.messaging();
       messaging.requestPermission().then(function() {
           console.log("notification permission granted");
           return messaging.getToken();
       }).then(function(token) {
-          alert(token);
+          console.log(token);
       })
-          .catch(function(err) {
-              alert("notification permission denied!");
-          })
+      .catch(function(err) {
+          alert("error getting permissions/tokens");
+          console.log("error getting permissions/tokens");
+      })
+
     </script>
     <!-- Add Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,14 +211,14 @@
             </div>
             <input type="hidden" name="owner" id="owner" value="">
             <input type="hidden" name="sellerName" id="sellerName" value="">
-            
+
             <button onclick="pushSell()" class="btn btn-primary btn-lg" data-dismiss="modal">Sell</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  
+
   <script>
       $(document).ready(function(){
           $("#myBtn").click(function(){
@@ -223,6 +226,6 @@
           });
       });
   </script>
-      
+
   </body>
 </html>
