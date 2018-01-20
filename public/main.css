@@ -1,5 +1,6 @@
 body{
     font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
     text-align: center;
     margin-left: 20%;
     margin-right: 20%;
@@ -7,16 +8,20 @@ body{
     padding-top: 70px;
 
     background-image: url("bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 nav a {
     background: #ffca27;
 }
 h1{
   font-size: 2em;
+  font-weight: 300;
 }
 
 h2{
   font-size: 1.2em;
+  font-weight: 300;
 }
 .main-content {
     position: relative;
