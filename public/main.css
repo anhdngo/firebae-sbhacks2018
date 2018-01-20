@@ -41,7 +41,7 @@ h2{
 }
 
 .navbar-nav li a {
- line-height: 60px;
+ font-size: 0.6em;
 }
 
 .logo {
@@ -51,9 +51,18 @@ h2{
 
 nav {
     box-shadow: 0 2px 5px rgba(0,0,0,.26);
+    opacity: 0.9;
 }
 .navbar-brand {
     color: #5d5d5d;
+    display: inline;
+    font-weight: 500;
+}
+.navbar-brand>img {
+    display: inline;
+    position: relative;
+    bottom: 5px;
+    margin-right: 5px;
 }
 #brand {
     color: #5d5d5d;
@@ -80,6 +89,16 @@ li {
     padding-left: 70px;
     padding-right: 70px;
     margin: 0;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: inline;
+}
+.user-options {
+    font-size: 1em;
 }
 
 
