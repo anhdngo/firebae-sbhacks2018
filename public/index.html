@@ -5,8 +5,10 @@
     <title>Sample FirebaseUI App</title>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-messaging.js"></script>
     <script>
       // Initialize Firebase
+
       var config = {
         apiKey: "AIzaSyDeaq2l-qJOTwvAg_drxZYQy-0Ty_-51pU",
         authDomain: "sbhacks2018.firebaseapp.com",
@@ -140,19 +142,19 @@
           return messaging.getToken();
       }).then(function(token) {
           console.log(token);
-          // messaging.getToken()
-          //     .then(function(currentToken) {
-          //         if (currentToken) {
-          //             // sendCloudMessage(currentToken, "test title", "test body");
-          //         } else {
-          //             // Show permission request.
-          //             console.log('No Instance ID token available. Request permission to generate one.');
-          //             // Show permission UI.
-          //         }
-          //     })
-          //     .catch(function(err) {
-          //         console.log('An error occurred while retrieving token. ', err);
-          //     });
+          messaging.getToken()
+              .then(function(currentToken) {
+                  if (currentToken) {
+                       sendCloudMessage(currentToken, "test title", "test body");
+                  } else {
+                      // Show permission request.
+                      console.log('No Instance ID token available. Request permission to generate one.');
+                      // Show permission UI.
+                  }
+              })
+              .catch(function(err) {
+                  console.log('An error occurred while retrieving token. ', err);
+              });
 
 
       })
@@ -163,16 +165,17 @@
 
       messaging.onMessage(function(payload) {
          console.log('onMessage: ', payload);
+         alert("received");
       });
 
       function sendCloudMessage(token, msgTitle, msgBody) {
 
 
 
-          const url = "https://fcm.googleapis.com/v1/projects/project-1042786080266/messages";
+          const url = "https://fcm.googleapis.com/fcm/send";
           var block = {
 
-                  "token": token,
+                  "to": token,
                   "notification": {
                       "body": msgBody,
                       "title": msgTitle
@@ -182,12 +185,12 @@
           $.ajax({
               type: 'POST',
               url: url,
-              dataType: 'jsonp',
+              dataType: 'json',
               headers: {
-                  "Content-Type": "application/jsonp",
-                  "Authorization": "Bearer AAAA8srk1go:APA91bFBG8Ic_anZjV5fDFZbwMymCBJsMM4DrI6-rqvd4hmh6ExkvJG4JKPXWJbs9YySa1WYUBr0ZQWAmYte7VLHLuGiwfTX_kQzxmO-0Yw4bq_iCcY8rxpCAyAcvZ-Sa8JBLRDcuP4z"
+                  "Content-Type": "application/json",
+                  "Authorization": "key=AIzaSyCgiJcf-CtJzcPG7YlTDNeySm_r51NRB0o"
               },
-              body: block,
+              body: JSON.stringify(block),
               success: function() {
                   alert("posted!");
               },
