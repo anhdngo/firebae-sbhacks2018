@@ -7,6 +7,29 @@ admin.initializeApp(functions.config().firebase);
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
+exports.notification = functions.firestore
+.document('Items/{ItemID}')
+.onDelete((event) => {
+    var seller = event.data.previous.get("Owner");
+    var item = event.data.previous.get("Name");
+    var price = event.data.previous.get("Price");
+    var data = [seller,item,price];
+    var docRef = admin.firestore().collection('users').doc(data[0]);
+    return docRef.get().then(function(doc){
+        // Notification details.
+        const payload = {
+            notification: {
+                title: 'You have just made a sale!',
+                body: 'Congratulations '+ doc.data().Name + '! You have just sold ' + 
+                        data[1] + ' for $' + data[2] + '.',
+            }
+        };
+        return [doc.data().Token, payload]; 
+    }).then((res) => {
+        return admin.messaging().sendToDevice(res[0], res[1]);
+    });
+});
+
 const buy = express();
 buy.use(bodyParser.json())
 

@@ -24,20 +24,23 @@
         var storage = firebase.storage().ref();
         var user = firebase.auth().currentUser;
         var image = document.getElementById('image').files[0];
-
         if(user){
-          db.collection("users").doc(user.uid).set({
-            Name: user.displayName,
-            UID: user.uid
-          });
-          db.collection("Items").doc(user.uid+document.getElementById('sell_name').value).set({
-            Description: document.getElementById('sell_desc').value,
-            Name: document.getElementById('sell_name').value,
-            Owner: user.uid,
-            Price: document.getElementById('sell_price').value
-          });
-          var storeName = storage.child(user.uid+document.getElementById('sell_name').value)
-          storeName.put(image)
+          firebase.messaging().getToken().then(function(currentToken){
+            db.collection("users").doc(user.uid).set({
+              Name: user.displayName,
+              UID: user.uid,
+              Token: currentToken
+            });
+            db.collection("Items").doc(user.uid+document.getElementById('sell_name').value).set({
+              Description: document.getElementById('sell_desc').value,
+              Name: document.getElementById('sell_name').value,
+              Owner: user.uid,
+              Price: document.getElementById('sell_price').value
+            });
+            var storeName = storage.child(user.uid+document.getElementById('sell_name').value)
+            storeName.put(image)
+
+          })
         } else {
           alert("You must be signed in to sell.")
         }
@@ -45,22 +48,13 @@
 
       pushBuy = function(prod) {
         var db = firebase.firestore();
-        var user = firebase.auth().currentUser;
-        console.log(prod);
-        if(user){
-          db.collection("users").doc(user.uid).set({
-            Name: user.displayName,
-            UID: user.uid
-          });
-          db.collection("Items").doc(prod[1]+prod[0]).delete();
-        } else {
-          alert("You must be signed in to buy.");
-        }
+        db.collection("Items").doc(prod[1]+prod[0]).delete();
       }
 
     </script>
     <script type="text/javascript">
       initApp = function() {
+        const messaging = firebase.messaging();
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
@@ -71,6 +65,8 @@
             var uid = user.uid;
             var phoneNumber = user.phoneNumber;
             var providerData = user.providerData;
+            
+            messaging.requestPermission()
             user.getIdToken().then(function(accessToken) {
               document.getElementById('sign-in-status').textContent = 'Signed in as ' + displayName;
               document.getElementById('sign-in').textContent = 'Sign out';
@@ -132,85 +128,20 @@
               " );
             })
 
-            // console.log(`${doc.id}`);
           });
         });
       }
 
-// curl --header "Authorization: key=AIzaSyCgiJcf-CtJzcPG7YlTDNeySm_r51NRB0o" --header "Content-Type: application/json" -d '{"to": "AAAA8srk1go:APA91bFBG8Ic_anZjV5fDFZbwMymCBJsMM4DrI6-rqvd4hmh6ExkvJG4JKPXWJbs9YySa1WYUBr0ZQWAmYte7VLHLuGiwfTX_kQzxmO-0Yw4bq_iCcY8rxpCAyAcvZ-Sa8JBLRDcuP4z", "notification": {"title": "test title", "body": "test body"}}' https://fcm.googleapis.com/fcm/send
       window.addEventListener('load', function() {
         initApp()
         initDB()
       });
     </script>
     <script>
-
-      /*
-      const messaging = firebase.messaging();
-      messaging.requestPermission().then(function() {
-          console.log("notification permission granted");
-          return messaging.getToken();
-      }).then(function(token) {
-          console.log(token);
-          messaging.getToken()
-              .then(function(currentToken) {
-                  if (currentToken) {
-                       sendCloudMessage(currentToken, "test title", "test body");
-                  } else {
-                      // Show permission request.
-                      console.log('No Instance ID token available. Request permission to generate one.');
-                      // Show permission UI.
-                  }
-              })
-              .catch(function(err) {
-                  console.log('An error occurred while retrieving token. ', err);
-              });
-
-
-      })
-      .catch(function(err) {
-          alert("error getting permissions/tokens");
-          console.log("error getting permissions/tokens");
-      });
-
       messaging.onMessage(function(payload) {
          console.log('onMessage: ', payload);
          alert("received");
       });
-
-      
-      function sendCloudMessage(token, msgTitle, msgBody) {
-
-
-
-          const url = "https://fcm.googleapis.com/fcm/send";
-          var block = {
-
-                  "to": token,
-                  "notification": {
-                      "body": msgBody,
-                      "title": msgTitle
-                  }
-          };
-          console.log(block);
-          $.ajax({
-              type: 'POST',
-              url: url,
-              dataType: 'json',
-              headers: {
-                  "Content-Type": "application/json",
-                  "Authorization": "key=AIzaSyCgiJcf-CtJzcPG7YlTDNeySm_r51NRB0o"
-              },
-              body: JSON.stringify(block),
-              success: function() {
-                  alert("posted!");
-              },
-              error: function(err) {
-                  console.log(err);
-              }
-          })
-      }*/
-
     </script>
     <!-- Add Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
