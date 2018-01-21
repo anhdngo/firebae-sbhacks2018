@@ -41,6 +41,9 @@
             storeName.put(image)
 
           })
+          setTimeout(function(){
+            location.reload(true);
+          }, 1000);
         } else {
           alert("You must be signed in to sell.")
         }
@@ -49,6 +52,9 @@
       pushBuy = function(prod) {
         var db = firebase.firestore();
         db.collection("Items").doc(prod[1]+prod[0]).delete();
+        setTimeout(function(){
+            location.reload(true);
+          }, 1000);
       }
 
     </script>
@@ -174,14 +180,13 @@
       </div>
     </div>
   </nav>
-
+  
   <div class="main-content container-fluid">
+  <button type="button" class="btn btn-primary btn-lg" id="myBtn">Sell Item</button> <br><br>  
   <div class="row">
     <div class="Shop"></div>
   </div>
   </div>
-
-  <button type="button" class="btn btn-primary btn-lg" id="myBtn">Sell Item</button>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
