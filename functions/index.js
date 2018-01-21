@@ -17,7 +17,7 @@ buy.post('*', (req, res) => {
 
 });
 
-exports.buy = functions.https.onRequest(buy);
+//exports.buy = functions.https.onRequest(buy);
 
 console.log("This is doing things")
 
@@ -46,4 +46,4 @@ sell.post("*", (req,res) => {
 
     res.send(200);
 });
-exports.sell = functions.https.onRequest(sell);
+//exports.sell = functions.https.onRequest(sell);

@@ -1,42 +1,41 @@
-[debug] [2018-01-20T17:51:29.959Z] ----------------------------------------------------------------------
-[debug] [2018-01-20T17:51:29.961Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Nihar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-01-20T17:51:29.962Z] CLI Version:   3.17.3
-[debug] [2018-01-20T17:51:29.962Z] Platform:      win32
-[debug] [2018-01-20T17:51:29.962Z] Node Version:  v6.2.1
-[debug] [2018-01-20T17:51:29.962Z] Time:          Sat Jan 20 2018 09:51:29 GMT-0800 (Pacific Standard Time)
-[debug] [2018-01-20T17:51:29.962Z] ----------------------------------------------------------------------
+[debug] [2018-01-21T00:55:30.997Z] ----------------------------------------------------------------------
+[debug] [2018-01-21T00:55:30.997Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Nihar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-01-21T00:55:30.997Z] CLI Version:   3.17.3
+[debug] [2018-01-21T00:55:30.997Z] Platform:      win32
+[debug] [2018-01-21T00:55:30.997Z] Node Version:  v6.2.1
+[debug] [2018-01-21T00:55:30.997Z] Time:          Sat Jan 20 2018 16:55:30 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-21T00:55:30.997Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-01-20T17:51:29.977Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-01-20T17:51:29.978Z] > authorizing via signed-in user
-[debug] [2018-01-20T17:51:29.980Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sbhacks2018  
+[debug] [2018-01-21T00:55:31.013Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-21T00:55:31.013Z] > authorizing via signed-in user
+[debug] [2018-01-21T00:55:31.013Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-21T00:55:31.013Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/HFxx99nvOxxBbQuCHvLi5upWrJNbs_a-sNcsLtVgn7M',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jan 20 2018 16:55:31 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-21T00:55:31.186Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-21T00:55:31.186Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/sbhacks2018  
   
- Sat Jan 20 2018 09:51:29 GMT-0800 (Pacific Standard Time)
-[debug] [2018-01-20T17:51:30.418Z] <<< HTTP RESPONSE 200
-[debug] [2018-01-20T17:51:30.420Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/sbhacks2018/tokens  
+ Sat Jan 20 2018 16:55:31 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-21T00:55:31.608Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-21T00:55:31.608Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/sbhacks2018/tokens  
   
- Sat Jan 20 2018 09:51:30 GMT-0800 (Pacific Standard Time)
-[debug] [2018-01-20T17:51:30.852Z] <<< HTTP RESPONSE 200
+ Sat Jan 20 2018 16:55:31 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-21T00:55:32.030Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'C:\Users\Nihar\Documents\UCSD\3rd Year\Q2\SBHACKS\sbhacks2018'...
 [info] 
-[debug] [2018-01-20T17:51:30.855Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/sbhacks2018  
+[debug] [2018-01-21T00:55:32.046Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/sbhacks2018  
   
- Sat Jan 20 2018 09:51:30 GMT-0800 (Pacific Standard Time)
-[debug] [2018-01-20T17:51:31.267Z] <<< HTTP RESPONSE 200
-[debug] [2018-01-20T17:51:31.267Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1042786080266/clients/_:getWebAppConfig  
+ Sat Jan 20 2018 16:55:32 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-21T00:55:32.483Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-21T00:55:32.483Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1042786080266/clients/_:getWebAppConfig  
   
- Sat Jan 20 2018 09:51:31 GMT-0800 (Pacific Standard Time)
-[debug] [2018-01-20T17:51:31.781Z] <<< HTTP RESPONSE 200
+ Sat Jan 20 2018 16:55:32 GMT-0800 (Pacific Standard Time)
+[debug] [2018-01-21T00:55:32.827Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] +  hosting: Local server: http://localhost:5000
 
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy
-[info] [hosting] Rewriting /buy/ to live function buy

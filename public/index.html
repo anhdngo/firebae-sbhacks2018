@@ -21,7 +21,9 @@
 
       pushSell = function() {
         var db = firebase.firestore();
+        var storage = firebase.storage().ref();
         var user = firebase.auth().currentUser;
+        var image = document.getElementById('image').files[0];
 
         if(user){
           db.collection("users").doc(user.uid).set({
@@ -34,6 +36,8 @@
             Owner: user.uid,
             Price: document.getElementById('sell_price').value
           });
+          var storeName = storage.child(user.uid+document.getElementById('sell_name').value)
+          storeName.put(image)
         } else {
           alert("You must be signed in to sell.")
         }
@@ -101,26 +105,32 @@
 
       initDB = function(){
         var db = firebase.firestore();
+        var storage = firebase.storage().ref();
 
         db.collection("Items").get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            $( ".Shop" ).append( "\
-            <div class=\"col-sm-6 col-md-4\">\
-              <div class=\"thumbnail\">\
-                <div class=\"caption\">\
-                  <h3 name=\"name\" class=\"identifier\">"+ doc.data().Name +"</h3>\
-                  <p name=\"description\">" + doc.data().Description + "</p>\
-                  <p name=\"price\"> $" + doc.data().Price + "</p>\
-                  <p>\
-                    <form action=\"/buy/\" method=\"POST\">\
-                      <input class=\"owner\" type=\"hidden\" value=\""+ doc.data().Owner +"\">\
-                      <input onclick=\"pushBuy(['"+doc.data().Name+"', '"+doc.data().Owner+"'])\" class=\"btn btn-primary btn-lg\" value=\"Buy Now\">\
-                    </form>\
-                  </p>\
+            storage.child(doc.get("Owner")+doc.get("Name")).getDownloadURL().then(function(url) {
+              $( ".Shop" ).append( "\
+              <div class=\"col-sm-6 col-md-4\">\
+                <div class=\"well\">\
+                  <div class=\"thumbnail\">\
+                    <img src="+url+"></div>\
+                    <div class=\"caption\">\
+                      <h3 name=\"name\" class=\"identifier\">"+ doc.data().Name +"</h3>\
+                      <p name=\"description\">" + doc.data().Description + "</p>\
+                      <p name=\"price\"> $" + doc.data().Price + "</p>\
+                      <p>\
+                        <form action=\"/buy/\" method=\"POST\">\
+                          <input class=\"owner\" type=\"hidden\" value=\""+ doc.data().Owner +"\">\
+                          <input onclick=\"pushBuy(['"+doc.data().Name+"', '"+doc.data().Owner+"'])\" class=\"btn btn-primary btn-lg\" value=\"Buy Now\">\
+                        </form>\
+                      </p>\
+                    </div>\
+                  </div>\
                 </div>\
               </div>\
-            </div>\
-            " );
+              " );
+            })
 
             // console.log(`${doc.id}`);
           });
@@ -135,7 +145,7 @@
     </script>
     <script>
 
-      <!--  NOTIFICATIONS -->
+      /*
       const messaging = firebase.messaging();
       messaging.requestPermission().then(function() {
           console.log("notification permission granted");
@@ -168,6 +178,7 @@
          alert("received");
       });
 
+      
       function sendCloudMessage(token, msgTitle, msgBody) {
 
 
@@ -198,7 +209,7 @@
                   console.log(err);
               }
           })
-      }
+      }*/
 
     </script>
     <!-- Add Bootstrap -->
@@ -247,22 +258,29 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Sell Item</h4>
+          <h2 class="modal-title" id="myModalLabel">Sell Item</h2>
         </div>
         <div class="modal-body">
           <form action="/sell/" method="POST">
             <div class="form-group">
-              <label>Name of Item</label>
+              <h3>Name of Item</h3>
               <input  class="form-control" name="name" id="sell_name" type="text">
             </div>
             <div class="form-group">
-              <label>Price of Item ($)</label>
+              <h3>Price of Item ($)</h3>
               <input  class="form-control" name="price" id="sell_price" type="number">
             </div>
             <div class="form-group">
-              <label>Description of Item</label>
+              <h3>Description of Item</h3>
               <textarea name="description" class="form-control" rows="3" id="sell_desc"></textarea>
             </div>
+            <div class="form-group">
+                <label class="btn btn-default btn-lg" for="image">
+                    <input name="image" id="image" type="file" style="display:none;">
+                    Upload Image
+                </label>
+            </div>
+            
             <input type="hidden" name="owner" id="owner" value="">
             <input type="hidden" name="sellerName" id="sellerName" value="">
 
